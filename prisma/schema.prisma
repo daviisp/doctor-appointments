@@ -6,3 +6,80 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Clinic {
+  id        String  @id @default(uuid())
+  name      String
+  email     String  @unique
+  password  String
+  avatarUrl String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("clinics")
+}
+
+model Doctor {
+  id               String  @id @default(uuid())
+  name             String
+  specialty        String
+  avatarUrl        String?
+  appointmentPrice Int
+
+  availabilities DoctorAvailability[]
+  appointments   Appointment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("doctors")
+}
+
+model DoctorAvailability {
+  id        String @id @default(uuid())
+  doctorId  String
+  doctor    Doctor @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  weekDay   Int
+  startTime String
+  endTime   String
+
+  @@map("doctor_availabilities")
+}
+
+model Patient {
+  id          String    @id @default(uuid())
+  name        String
+  cpf         String    @unique
+  phone       String
+  sex         Sex
+  dateOfBirth DateTime?
+
+  appointments Appointment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("patients")
+}
+
+model Appointment {
+  id   String   @id @default(uuid())
+  date DateTime
+
+  doctorId String
+  doctor   Doctor @relation(fields: [doctorId], references: [id])
+
+  patientId String
+  patient   Patient @relation(fields: [patientId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("appointments")
+}
+
+enum Sex {
+  MALE
+  FEMALE
+}
