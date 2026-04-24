@@ -20,12 +20,23 @@ model Clinic {
   @@map("clinics")
 }
 
+model Specialty {
+  id   String @id @default(uuid())
+  name String @unique
+
+  doctors Doctor[]
+
+  @@map("specialties")
+}
+
 model Doctor {
   id               String  @id @default(uuid())
   name             String
-  specialty        String
   avatarUrl        String?
   appointmentPrice Int
+
+  specialtyId String
+  specialty   Specialty @relation(fields: [specialtyId], references: [id])
 
   availabilities DoctorAvailability[]
   appointments   Appointment[]
