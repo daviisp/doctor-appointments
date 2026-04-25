@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginSchema } from "@/schemas/login-schema";
-import { authAction } from "@/actions/auth";
+import { loginAction } from "@/actions/login";
 import {
   Eye,
   EyeOff,
@@ -45,7 +45,7 @@ export const LoginForm = () => {
   });
 
   const onSubmit = async (data: LoginSchema) => {
-    const result = await authAction(data);
+    const result = await loginAction(data);
     if (result?.error) {
       toast.error(result.error);
     }
