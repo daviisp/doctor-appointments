@@ -11,17 +11,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: { label: "Senha", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
-          return null;
-        }
+        if (!credentials?.email || !credentials?.password) return null;
 
         const clinic = await prisma.clinic.findUnique({
           where: { email: credentials.email as string },
         });
 
-        if (!clinic) {
-          return null;
-        }
+        if (!clinic) return null;
 
         const passwordMatch = await compare(
           credentials.password as string,
@@ -39,6 +35,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/auth",
+    signIn: "/login",
   },
 });

@@ -1,15 +1,15 @@
 "use server";
 
 import { signIn } from "@/auth";
-import { AuthSchema } from "@/schemas/auth-schema";
+import { LoginSchema } from "@/schemas/login-schema";
 import { AuthError } from "next-auth";
 
-export async function authAction(data: AuthSchema) {
+export async function authAction(data: LoginSchema) {
   try {
     await signIn("credentials", {
       email: data.email,
       password: data.password,
-      redirectTo: "/",
+      redirectTo: "/painel",
     });
   } catch (error) {
     if (error instanceof AuthError) {
