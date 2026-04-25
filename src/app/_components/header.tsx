@@ -17,7 +17,7 @@ interface HeaderProps {
 export const Header = ({ title, subTitle }: HeaderProps) => {
   return (
     <div className="space-y-4">
-      <Breadcrumb className="hidden sm:block">
+      <Breadcrumb className="hidden md:block">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink
