@@ -2,39 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Stethoscope } from "lucide-react";
 import Link from "next/link";
+import { DoctorWithAppointmentCount } from "@/types/doctor-with-appointment-count";
+import { getDoctorsWithAppointmentCount } from "@/actions/get-doctors-with-appointments-count";
 
-const doctors = [
-  {
-    name: "Dr. Lucas Moreira",
-    specialty: "Cardiologista",
-    appointments: 52,
-    avatar: "/doctors/doctor1.jpg",
-    initials: "LM",
-  },
-  {
-    name: "Dr. Camila Ferreira",
-    specialty: "Ginecologista",
-    appointments: 45,
-    avatar: "/doctors/doctor2.jpg",
-    initials: "CF",
-  },
-  {
-    name: "Dr. Rafael Santos",
-    specialty: "Pediatria",
-    appointments: 38,
-    avatar: "/doctors/doctor3.jpg",
-    initials: "RS",
-  },
-  {
-    name: "Dr. Mariana Almeida",
-    specialty: "Dermatologista",
-    appointments: 35,
-    avatar: "/doctors/doctor4.jpg",
-    initials: "MA",
-  },
-];
+export const DoctorsList = async () => {
+  const doctors = await getDoctorsWithAppointmentCount();
 
-export const DoctorsList = () => {
   return (
     <Card className="border border-border">
       <CardHeader className="pb-3">
@@ -53,13 +26,18 @@ export const DoctorsList = () => {
       </CardHeader>
       <CardContent className="pt-0">
         <div className="space-y-3">
-          {doctors.map((doctor, index) => (
-            <div key={index} className="flex items-center justify-between">
+          {doctors.map((doctor: DoctorWithAppointmentCount) => (
+            <div key={doctor.id} className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10">
-                  <AvatarImage src={doctor.avatar} alt={doctor.name} />
+                  <AvatarImage src={doctor.avatarUrl ?? ""} alt={doctor.name} />
                   <AvatarFallback className="bg-muted text-xs">
-                    {doctor.initials}
+                    {doctor.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")
+                      .slice(0, 2)
+                      .toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
                 <div>
