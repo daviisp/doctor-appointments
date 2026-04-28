@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { LoginSchema } from "@/schemas/login-schema";
 import { AuthError } from "next-auth";
 
-export async function loginAction(data: LoginSchema) {
+export const loginAction = async (data: LoginSchema) => {
   try {
     await signIn("credentials", {
       email: data.email,
@@ -17,4 +17,4 @@ export async function loginAction(data: LoginSchema) {
     }
     throw error;
   }
-}
+};
