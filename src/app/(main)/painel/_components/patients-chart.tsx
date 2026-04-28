@@ -4,17 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Users } from "lucide-react";
 
-const data = [
-  { day: "Dom", pacientes: 8, novos: 4 },
-  { day: "Seg", pacientes: 12, novos: 6 },
-  { day: "Ter", pacientes: 14, novos: 5 },
-  { day: "Qua", pacientes: 18, novos: 8 },
-  { day: "Qui", pacientes: 15, novos: 7 },
-  { day: "Sex", pacientes: 20, novos: 10 },
-  { day: "Sáb", pacientes: 16, novos: 8 },
-];
+interface PatientsChartProps {
+  data: {
+    day: string;
+    total: number;
+  }[];
+}
 
-export const PatientsChart = () => {
+export const PatientsChart = ({ data }: PatientsChartProps) => {
   return (
     <Card className="border border-border">
       <CardHeader className="pb-2">
@@ -36,19 +33,10 @@ export const PatientsChart = () => {
               axisLine={false}
               tickLine={false}
               tick={{ fontSize: 12, fill: "#6b7280" }}
-              ticks={[5, 10, 15, 20]}
-              domain={[0, 25]}
+              allowDecimals={false}
             />
             <Bar
-              dataKey="pacientes"
-              stackId="a"
-              fill="#22c55e"
-              radius={[0, 0, 0, 0]}
-              barSize={32}
-            />
-            <Bar
-              dataKey="novos"
-              stackId="a"
+              dataKey="total"
               fill="#3b82f6"
               radius={[4, 4, 0, 0]}
               barSize={32}
