@@ -1,19 +1,11 @@
 import { AppointmentsTable } from "./_components/appointments-table";
 import { DoctorsList } from "./_components/doctors-list";
 import { Header } from "../../_components/header";
-import { PatientsChart } from "./_components/pattients-chart";
 import { SpecialtiesList } from "./_components/specialties-list";
 import { StatsCards } from "./_components/stats-card";
-import { auth } from "@/auth";
-import { redirect } from "next/navigation";
+import { PatientsChart } from "./_components/patients-chart";
 
-const PanelPage = async () => {
-  const session = await auth();
-
-  if (!session?.user) {
-    redirect("/login");
-  }
-
+const PanelPage = () => {
   return (
     <div className="min-h-screen bg-[#f8fafc]">
       <div className="p-4 sm:p-6 lg:ml-72">
