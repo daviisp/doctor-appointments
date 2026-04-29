@@ -1,12 +1,12 @@
 import { Calendar, Users, Stethoscope } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { getTotalAppointments } from "@/actions/get-total-appointments";
 import { getTotalPatients } from "@/actions/get-total-patients";
 import { getTotalDoctors } from "@/actions/get-total-doctors";
+import { getTotalAppointmentsOnMonth } from "@/actions/get-total-appointments-on-month";
 
 export const StatsCards = async () => {
   const [totalAppointments, totalPatients, totalDoctors] = await Promise.all([
-    getTotalAppointments(),
+    getTotalAppointmentsOnMonth(),
     getTotalPatients(),
     getTotalDoctors(),
   ]);
@@ -20,7 +20,9 @@ export const StatsCards = async () => {
               <Calendar className="h-5 w-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Agendamentos</p>
+              <p className="text-sm text-muted-foreground">
+                Agendamentos nesse mês
+              </p>
               <p className="text-xl font-bold">{totalAppointments}</p>
             </div>
           </div>
@@ -33,7 +35,7 @@ export const StatsCards = async () => {
               <Users className="h-5 w-5 text-amber-600" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Pacientes</p>
+              <p className="text-sm text-muted-foreground">Pacientes</p>
               <p className="text-xl font-bold">{totalPatients}</p>
             </div>
           </div>
@@ -46,7 +48,7 @@ export const StatsCards = async () => {
               <Stethoscope className="h-5 w-5 text-purple-600" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground">Médicos</p>
+              <p className="text-sm text-muted-foreground">Médicos</p>
               <p className="text-xl font-bold">{totalDoctors}</p>
             </div>
           </div>
