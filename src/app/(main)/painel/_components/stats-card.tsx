@@ -12,7 +12,7 @@ export const StatsCards = async () => {
   ]);
 
   return (
-    <div className="grid gap-8 grid-cols-3">
+    <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
       <Card className="border border-border py-0">
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
