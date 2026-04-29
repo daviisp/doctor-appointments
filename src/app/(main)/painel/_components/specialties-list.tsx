@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import { getSpecialtiesWithUpcomingAppointments } from "@/actions/get-specialties-with-upcoming-appointments";
 import { SpecialtyWithUpcomingAppointments } from "@/types/specialties-with-upcoming-appointments";
+import { HospitalIcon } from "lucide-react";
 
 export const SpecialtiesList = async () => {
   const specialties = await getSpecialtiesWithUpcomingAppointments();
@@ -10,7 +11,8 @@ export const SpecialtiesList = async () => {
     <Card className="border border-border">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base font-semibold">
+          <CardTitle className="flex items-center gap-2 text-base font-semibold">
+            <HospitalIcon className="h-4 w-4 text-[#1a56db]" />
             Especialidades
           </CardTitle>
           <Link
