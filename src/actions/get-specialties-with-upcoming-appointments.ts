@@ -1,10 +1,10 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { SpecialtyWithAppointmentCount } from "@/types/specialty-with-appointment-count";
+import { SpecialtyWithUpcomingAppointments } from "@/types/specialties-with-upcoming-appointments";
 
-export const getSpecialtiesWithUpcomingAppointmentCount = async (): Promise<
-  SpecialtyWithAppointmentCount[]
+export const getSpecialtiesWithUpcomingAppointments = async (): Promise<
+  SpecialtyWithUpcomingAppointments[]
 > => {
   const now = new Date();
 

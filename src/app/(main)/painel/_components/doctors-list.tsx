@@ -2,8 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Stethoscope } from "lucide-react";
 import Link from "next/link";
-import { DoctorWithAppointmentCount } from "@/types/doctor-with-appointment-count";
-import { getDoctorsWithUpcomingAppointments } from "@/actions/get-doctors-with-upcoming-appointments-count";
+import { DoctorWithUpcomingAppointments } from "@/types/doctor-with-upcoming-appointments";
+import { getDoctorsWithUpcomingAppointments } from "@/actions/get-doctors-with-upcoming-appointments";
 
 export const DoctorsList = async () => {
   const doctors = await getDoctorsWithUpcomingAppointments();
@@ -26,7 +26,7 @@ export const DoctorsList = async () => {
       </CardHeader>
       <CardContent className="pt-0">
         <div className="space-y-3">
-          {doctors.map((doctor: DoctorWithAppointmentCount) => (
+          {doctors.map((doctor: DoctorWithUpcomingAppointments) => (
             <div key={doctor.id} className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10">

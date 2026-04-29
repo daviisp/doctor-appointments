@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Calendar } from "lucide-react";
 import { getAppointments } from "@/actions/get-appointments";
-import { AppointmentWithRelations } from "@/types/appointment-with-relations";
+import { Appointment } from "@/types/appointment";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { StatusBadge } from "@/app/_components/status-badge";
@@ -45,7 +45,7 @@ export const AppointmentsTable = async () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {appointments.map((appointment: AppointmentWithRelations) => (
+              {appointments.map((appointment: Appointment) => (
                 <TableRow key={appointment.id} className="hover:bg-muted/50">
                   <TableCell className="font-medium text-sm">
                     {appointment.patient.name}
@@ -67,7 +67,7 @@ export const AppointmentsTable = async () => {
           </Table>
         </div>
         <div className="flex flex-col gap-3 md:hidden">
-          {appointments.map((appointment: AppointmentWithRelations) => (
+          {appointments.map((appointment: Appointment) => (
             <div
               key={appointment.id}
               className="rounded-lg border border-border p-4 flex flex-col gap-2"

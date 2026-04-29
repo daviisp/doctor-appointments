@@ -1,10 +1,10 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { DoctorWithAppointmentCount } from "@/types/doctor-with-appointment-count";
+import { DoctorWithUpcomingAppointments } from "@/types/doctor-with-upcoming-appointments";
 
 export const getDoctorsWithUpcomingAppointments = async (): Promise<
-  DoctorWithAppointmentCount[]
+  DoctorWithUpcomingAppointments[]
 > => {
   const now = new Date();
 

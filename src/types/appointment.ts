@@ -1,4 +1,4 @@
-export type AppointmentWithRelations = {
+export type Appointment = {
   id: string;
   date: Date;
   patient: {

@@ -1,8 +1,11 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { AppointmentsChartOnWeek } from "@/types/appointments-chart-on-week";
 
-export const getAppointmentsChartOnWeek = async () => {
+export const getAppointmentsChartOnWeek = async (): Promise<
+  AppointmentsChartOnWeek[]
+> => {
   const now = new Date();
   const dayOfWeek = now.getDay();
 

@@ -1,4 +1,4 @@
-export type DoctorWithAppointmentCount = {
+export type DoctorWithUpcomingAppointments = {
   id: string;
   name: string;
   specialty: string;

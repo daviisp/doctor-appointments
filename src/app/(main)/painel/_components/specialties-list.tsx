@@ -1,10 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
-import { getSpecialtiesWithUpcomingAppointmentCount } from "@/actions/get-specialties-with-upcoming-appointment-count";
-import { SpecialtyWithAppointmentCount } from "@/types/specialty-with-appointment-count";
+import { getSpecialtiesWithUpcomingAppointments } from "@/actions/get-specialties-with-upcoming-appointments";
+import { SpecialtyWithUpcomingAppointments } from "@/types/specialties-with-upcoming-appointments";
 
 export const SpecialtiesList = async () => {
-  const specialties = await getSpecialtiesWithUpcomingAppointmentCount();
+  const specialties = await getSpecialtiesWithUpcomingAppointments();
 
   return (
     <Card className="border border-border">
@@ -23,7 +23,7 @@ export const SpecialtiesList = async () => {
       </CardHeader>
       <CardContent className="pt-0">
         <div className="space-y-4">
-          {specialties.map((specialty: SpecialtyWithAppointmentCount) => (
+          {specialties.map((specialty: SpecialtyWithUpcomingAppointments) => (
             <div key={specialty.id} className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">{specialty.name}</span>

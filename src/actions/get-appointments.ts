@@ -1,11 +1,9 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { AppointmentWithRelations } from "@/types/appointment-with-relations";
+import { Appointment } from "@/types/appointment";
 
-export const getAppointments = async (): Promise<
-  AppointmentWithRelations[]
-> => {
+export const getAppointments = async (): Promise<Appointment[]> => {
   const appointments = await prisma.appointment.findMany({
     include: {
       patient: {
