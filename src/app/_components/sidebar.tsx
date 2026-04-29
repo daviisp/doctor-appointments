@@ -5,7 +5,6 @@ import {
   LayoutDashboard,
   Users,
   Stethoscope,
-  CreditCard,
   MoreVertical,
   Menu,
   X,
