@@ -3,11 +3,11 @@ import { DoctorsList } from "./_components/doctors-list";
 import { Header } from "../../_components/header";
 import { SpecialtiesList } from "./_components/specialties-list";
 import { StatsCards } from "./_components/stats-card";
-import { PatientsChart } from "./_components/patients-chart";
-import { getPatientsChartData } from "@/actions/get-patients-chart-data";
+import { AppointmentsChartOnWeek } from "./_components/appointments-chart-on-week";
+import { getAppointmentsChartOnWeek } from "@/actions/get-appointments-chart-on-week";
 
 const PanelPage = async () => {
-  const chartData = await getPatientsChartData();
+  const chartData = await getAppointmentsChartOnWeek();
 
   return (
     <div className="min-h-screen bg-[#f8fafc]">
@@ -17,7 +17,7 @@ const PanelPage = async () => {
           <StatsCards />
           <div className="grid gap-6 lg:grid-cols-3">
             <div className="space-y-6 lg:col-span-2">
-              <PatientsChart data={chartData} />
+              <AppointmentsChartOnWeek data={chartData} />
               <AppointmentsTable />
             </div>
             <div className="space-y-6">
