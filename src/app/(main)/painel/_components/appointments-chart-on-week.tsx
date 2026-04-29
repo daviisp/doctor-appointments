@@ -11,13 +11,13 @@ interface PatientsChartProps {
   }[];
 }
 
-export const PatientsChart = ({ data }: PatientsChartProps) => {
+export const AppointmentsChartOnWeek = ({ data }: PatientsChartProps) => {
   return (
     <Card className="border border-border">
       <CardHeader className="pb-2">
         <CardTitle className="flex items-center gap-2 text-base font-semibold">
           <Users className="h-4 w-4 text-[#1a56db]" />
-          Pacientes
+          Pacientes agendados nessa semana
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-0">
