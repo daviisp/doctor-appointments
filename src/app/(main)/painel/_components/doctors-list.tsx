@@ -3,10 +3,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Stethoscope } from "lucide-react";
 import Link from "next/link";
 import { DoctorWithAppointmentCount } from "@/types/doctor-with-appointment-count";
-import { getDoctorsWithAppointmentCount } from "@/actions/get-doctors-with-appointments-count";
+import { getDoctorsWithUpcomingAppointments } from "@/actions/get-doctors-with-upcoming-appointments-count";
 
 export const DoctorsList = async () => {
-  const doctors = await getDoctorsWithAppointmentCount();
+  const doctors = await getDoctorsWithUpcomingAppointments();
 
   return (
     <Card className="border border-border">
