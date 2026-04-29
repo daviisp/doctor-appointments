@@ -20,7 +20,7 @@ export const StatsCards = async () => {
               <Calendar className="h-5 w-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs md:text-sm text-muted-foreground">
                 Agendamentos nesse mês
               </p>
               <p className="text-xl font-bold">{totalAppointments}</p>
@@ -35,7 +35,9 @@ export const StatsCards = async () => {
               <Users className="h-5 w-5 text-amber-600" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Pacientes</p>
+              <p className="text-xs md:text-sm text-muted-foreground">
+                Pacientes
+              </p>
               <p className="text-xl font-bold">{totalPatients}</p>
             </div>
           </div>
@@ -48,7 +50,9 @@ export const StatsCards = async () => {
               <Stethoscope className="h-5 w-5 text-purple-600" />
             </div>
             <div>
-              <p className="text-sm text-muted-foreground">Médicos</p>
+              <p className="text-xs md:text-sm text-muted-foreground">
+                Médicos
+              </p>
               <p className="text-xl font-bold">{totalDoctors}</p>
             </div>
           </div>
