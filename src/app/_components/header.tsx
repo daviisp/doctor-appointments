@@ -44,11 +44,6 @@ export const Header = ({ title, subTitle }: HeaderProps) => {
             Access a detailed overview of key metrics and patient outcomes
           </p>
         </div>
-        <Button variant="outline" className="gap-2 w-full sm:w-auto">
-          <Calendar className="h-4 w-4" />
-          Maio
-          <ChevronDown className="h-4 w-4" />
-        </Button>
       </div>
     </div>
   );
