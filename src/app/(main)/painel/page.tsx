@@ -13,7 +13,11 @@ const PanelPage = async () => {
     <div className="min-h-screen bg-[#f8fafc]">
       <div className="p-4 sm:p-6 lg:ml-72">
         <div className="mx-auto max-w-7xl space-y-6">
-          <Header title="Painel" subTitle="Painel" />
+          <Header
+            title="Painel"
+            subTitle="Painel"
+            description="Acesse uma visão detalhada das principais métricas e resultados dos pacientes"
+          />
           <StatsCards />
           <div className="grid gap-6 lg:grid-cols-3">
             <div className="space-y-6 lg:col-span-2">

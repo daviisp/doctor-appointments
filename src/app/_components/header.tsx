@@ -12,9 +12,10 @@ import {
 interface HeaderProps {
   title: string;
   subTitle: string;
+  description: string;
 }
 
-export const Header = ({ title, subTitle }: HeaderProps) => {
+export const Header = ({ title, subTitle, description }: HeaderProps) => {
   return (
     <div className="space-y-4">
       <Breadcrumb className="hidden md:block">
@@ -40,9 +41,7 @@ export const Header = ({ title, subTitle }: HeaderProps) => {
           <h1 className="text-2xl font-bold tracking-tight pt-3 lg:pt-0">
             {subTitle}
           </h1>
-          <p className="text-sm text-muted-foreground">
-            Access a detailed overview of key metrics and patient outcomes
-          </p>
+          <p className="text-sm text-muted-foreground">{description}</p>
         </div>
       </div>
     </div>
