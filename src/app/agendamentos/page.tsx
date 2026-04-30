@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { AppointmentsTable } from "./_components/appointments-table";
 
-export default function AgendamentosPage() {
+export const AppointmentsPage = () => {
   return (
     <div className="flex-1 overflow-auto">
       <div className="p-8">
@@ -43,4 +43,4 @@ export default function AgendamentosPage() {
       </div>
     </div>
   );
-}
+};
