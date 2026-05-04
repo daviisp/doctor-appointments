@@ -6,14 +6,21 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { ReactNode } from "react";
 
 interface HeaderProps {
   title: string;
   subTitle: string;
   description: string;
+  action?: ReactNode;
 }
 
-export const Header = ({ title, subTitle, description }: HeaderProps) => {
+export const Header = ({
+  title,
+  subTitle,
+  description,
+  action,
+}: HeaderProps) => {
   return (
     <div className="space-y-4">
       <Breadcrumb className="hidden md:block">
@@ -41,6 +48,7 @@ export const Header = ({ title, subTitle, description }: HeaderProps) => {
           </h1>
           <p className="text-sm text-muted-foreground">{description}</p>
         </div>
+        {action && <div className="sm:pt-10 lg:pt-0">{action}</div>}
       </div>
     </div>
   );
