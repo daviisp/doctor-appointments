@@ -1,46 +1,47 @@
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { AppointmentsTable } from "./_components/appointments-table";
+import { Header } from "../_components/header";
+import { AppointmentsSection } from "./_components/appointments-section";
+import { getUpcomingAppointments } from "@/actions/get-upcoming-appointments";
+import { getPastAppointments } from "@/actions/get-past-appointments";
+import { Separator } from "@/components/ui/separator";
 
-export const AppointmentsPage = () => {
+const AppointmentsPage = async () => {
+  const [upcoming, past] = await Promise.all([
+    getUpcomingAppointments(),
+    getPastAppointments(),
+  ]);
+
   return (
-    <div className="flex-1 overflow-auto">
-      <div className="p-8">
-        <Breadcrumb className="mb-4">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/painel">Menu Principal</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>Agendamentos</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <div className="mb-8 flex items-start justify-between">
-          <div>
-            <h1 className="text-2xl font-semibold text-foreground">
-              Agendamentos
-            </h1>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Access a detailed overview of key metrics and patient outcomes
-            </p>
+    <div className="min-h-screen bg-[#f8fafc]">
+      <div className="p-4 sm:p-6 lg:ml-72">
+        <div className="mx-auto max-w-7xl space-y-6">
+          <Header
+            title="Agendamentos"
+            subTitle="Agendamentos"
+            description="Gerencie todos os agendamentos da clínica"
+            action={
+              <Button className="bg-[#1a56db] hover:bg-[#1a56db]/90 cursor-pointer w-full sm:w-auto">
+                <Plus className="mr-2 h-4 w-4" />
+                Agendar consulta
+              </Button>
+            }
+          />
+          <div className="space-y-8 pt-6">
+            <AppointmentsSection
+              title="Próximos agendamentos"
+              appointments={upcoming}
+            />
+            <Separator />
+            <AppointmentsSection
+              title="Agendamentos anteriores"
+              appointments={past}
+            />
           </div>
-          <Button className="bg-primary hover:bg-primary/90">
-            <Plus className="mr-2 h-4 w-4" />
-            Agendar consulta
-          </Button>
         </div>
-        <AppointmentsTable />
       </div>
     </div>
   );
 };
+
+export default AppointmentsPage;
