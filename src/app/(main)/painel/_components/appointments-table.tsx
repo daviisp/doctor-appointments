@@ -8,21 +8,25 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Calendar } from "lucide-react";
-import { getAppointments } from "@/actions/get-appointments";
-import { Appointment } from "@/types/appointment";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { StatusBadge } from "@/app/_components/status-badge";
+import { getUpcomingAppointments } from "@/actions/get-upcoming-appointments";
+import { AppointmentWithRelations } from "@/types/appointment-with-relations";
 
-export const AppointmentsTable = async () => {
-  const appointments = await getAppointments();
+interface AppointmentsTableProps {
+  status: "Confirmado" | "Finalizado";
+}
+
+export const AppointmentsTable = async ({ status }: AppointmentsTableProps) => {
+  const appointments = await getUpcomingAppointments();
 
   return (
     <Card className="border border-border">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center gap-2 text-base font-semibold">
           <Calendar className="h-4 w-4 text-[#1a56db]" />
-          Agendamentos
+          Próximos agendamentos
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-0">
@@ -45,7 +49,7 @@ export const AppointmentsTable = async () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {appointments.map((appointment: Appointment) => (
+              {appointments.map((appointment: AppointmentWithRelations) => (
                 <TableRow key={appointment.id} className="hover:bg-muted/50">
                   <TableCell className="font-medium text-sm">
                     {appointment.patient.name}
@@ -59,7 +63,7 @@ export const AppointmentsTable = async () => {
                     {appointment.doctor.name}
                   </TableCell>
                   <TableCell>
-                    <StatusBadge />
+                    <StatusBadge status={status} />
                   </TableCell>
                 </TableRow>
               ))}
@@ -67,7 +71,7 @@ export const AppointmentsTable = async () => {
           </Table>
         </div>
         <div className="flex flex-col gap-3 md:hidden">
-          {appointments.map((appointment: Appointment) => (
+          {appointments.map((appointment: AppointmentWithRelations) => (
             <div
               key={appointment.id}
               className="rounded-lg border border-border p-4 flex flex-col gap-2"
@@ -76,7 +80,7 @@ export const AppointmentsTable = async () => {
                 <span className="font-medium text-sm">
                   {appointment.patient.name}
                 </span>
-                <StatusBadge />
+                <StatusBadge status={status} />
               </div>
               <div className="flex flex-col gap-1">
                 <span className="text-xs text-muted-foreground">
