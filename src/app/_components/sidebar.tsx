@@ -11,10 +11,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/", active: true },
+  { icon: LayoutDashboard, label: "Dashboard", href: "/painel" },
   { icon: Calendar, label: "Agendamentos", href: "/agendamentos" },
   { icon: Stethoscope, label: "Médicos", href: "/medicos" },
   { icon: Users, label: "Pacientes", href: "/pacientes" },
@@ -22,6 +23,7 @@ const menuItems = [
 
 export const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
@@ -64,7 +66,7 @@ export const Sidebar = () => {
                   onClick={() => setIsOpen(false)}
                   className={cn(
                     "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                    item.active
+                    pathname === item.href
                       ? "bg-[#1a56db] text-white"
                       : "text-muted-foreground hover:bg-muted hover:text-foreground",
                   )}
