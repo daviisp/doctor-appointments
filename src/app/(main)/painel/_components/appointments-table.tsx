@@ -34,32 +34,35 @@ export const AppointmentsTable = async ({ status }: AppointmentsTableProps) => {
           <Table>
             <TableHeader>
               <TableRow className="hover:bg-transparent">
-                <TableHead className="text-xs font-medium text-muted-foreground uppercase">
+                <TableHead className="text-xs font-medium uppercase">
                   Paciente
                 </TableHead>
-                <TableHead className="text-xs font-medium text-muted-foreground uppercase">
+                <TableHead className="text-xs font-medium uppercase">
                   Data
                 </TableHead>
-                <TableHead className="text-xs font-medium text-muted-foreground uppercase">
+                <TableHead className="text-xs font-medium uppercase">
                   Doutor
                 </TableHead>
-                <TableHead className="text-xs font-medium text-muted-foreground uppercase">
+                <TableHead className="text-xs font-medium uppercase">
                   Status
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {appointments.map((appointment: AppointmentWithRelations) => (
-                <TableRow key={appointment.id} className="hover:bg-muted/50">
+                <TableRow
+                  key={appointment.id}
+                  className="text-foreground font-medium hover:bg-muted/50"
+                >
                   <TableCell className="font-medium text-sm">
                     {appointment.patient.name}
                   </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
+                  <TableCell className="text-sm">
                     {format(new Date(appointment.date), "dd/MM/yy, HH:mm", {
                       locale: ptBR,
                     })}
                   </TableCell>
-                  <TableCell className="text-sm text-muted-foreground">
+                  <TableCell className="text-sm">
                     {appointment.doctor.name}
                   </TableCell>
                   <TableCell>
@@ -83,15 +86,13 @@ export const AppointmentsTable = async ({ status }: AppointmentsTableProps) => {
                 <StatusBadge status={status} />
               </div>
               <div className="flex flex-col gap-1">
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs">
                   📅{" "}
                   {format(new Date(appointment.date), "dd/MM/yy, HH:mm", {
                     locale: ptBR,
                   })}
                 </span>
-                <span className="text-xs text-muted-foreground">
-                  👨‍⚕️ {appointment.doctor.name}
-                </span>
+                <span className="text-xs">👨‍⚕️ {appointment.doctor.name}</span>
               </div>
             </div>
           ))}
