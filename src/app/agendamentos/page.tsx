@@ -27,7 +27,7 @@ const AppointmentsPage = async () => {
               </Button>
             }
           />
-          <div className="space-y-8 pt-6">
+          <div className="space-y-8 pt-4">
             <AppointmentsSection
               title="Próximos agendamentos"
               appointments={upcoming}
