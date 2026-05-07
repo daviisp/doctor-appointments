@@ -50,22 +50,22 @@ export const AppointmentsTable = ({
         </TableHeader>
         <TableBody>
           {appointments.map((appointment) => (
-            <TableRow key={appointment.id}>
+            <TableRow key={appointment.id} className="h-16">
               <TableCell className="font-medium text-foreground">
                 {appointment.patient.name}
               </TableCell>
-              <TableCell className="text-muted-foreground">
+              <TableCell className="font-medium text-foreground">
                 {format(new Date(appointment.date), "dd/MM/yy, HH:mm", {
                   locale: ptBR,
                 })}
               </TableCell>
-              <TableCell className="text-muted-foreground">
+              <TableCell className="font-medium text-foreground">
                 {appointment.doctor.name}
               </TableCell>
-              <TableCell className="text-muted-foreground">
+              <TableCell className="font-medium text-foreground">
                 {appointment.doctor.specialty.name}
               </TableCell>
-              <TableCell className="text-muted-foreground">
+              <TableCell className="font-medium text-foreground">
                 {(appointment.doctor.appointmentPrice / 100).toLocaleString(
                   "pt-BR",
                   {
@@ -76,11 +76,6 @@ export const AppointmentsTable = ({
               </TableCell>
               <TableCell>
                 <StatusBadge status={status} />
-              </TableCell>
-              <TableCell>
-                <Button variant="ghost" size="icon" className="h-8 w-8">
-                  <ExternalLink className="h-4 w-4 text-muted-foreground" />
-                </Button>
               </TableCell>
             </TableRow>
           ))}
