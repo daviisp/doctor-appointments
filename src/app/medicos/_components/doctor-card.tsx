@@ -52,7 +52,7 @@ export const DoctorCard = ({ doctor }: DoctorCardProps) => {
           </div>
         </div>
 
-        <div className="space-y-2 text-sm text-muted-foreground">
+        <div className="space-y-2 text-sm font-medium text-foreground">
           <div className="flex items-center gap-2">
             <Calendar className="size-4" />
             <span>{days}</span>
