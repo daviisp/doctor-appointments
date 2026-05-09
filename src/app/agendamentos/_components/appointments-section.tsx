@@ -1,16 +1,19 @@
-import { Calendar } from "lucide-react";
-import { AppointmentsCards } from "./appointments-cards";
-import { AppointmentsTable } from "./appointments-table";
 import { AppointmentWithRelations } from "@/types/appointment-with-relations";
+import { AppointmentsTable } from "./appointments-table";
+import { AppointmentsCards } from "./appointments-cards";
 
 interface AppointmentsSectionProps {
   title: string;
   appointments: AppointmentWithRelations[];
+  doctors: any[];
+  patients: any[];
 }
 
 export const AppointmentsSection = ({
   title,
   appointments,
+  doctors,
+  patients,
 }: AppointmentsSectionProps) => {
   if (appointments.length === 0) return null;
 
@@ -18,17 +21,20 @@ export const AppointmentsSection = ({
 
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        <Calendar className="h-4 w-4 text-[#1a56db]" />
-        <h2 className="text-base font-semibold tracking-wide">{title}</h2>
-      </div>
+      <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+        {title}
+      </h2>
       <AppointmentsTable
         appointments={appointments}
         status={isPast ? "Finalizado" : "Confirmado"}
+        doctors={doctors}
+        patients={patients}
       />
       <AppointmentsCards
         appointments={appointments}
         status={isPast ? "Finalizado" : "Confirmado"}
+        doctors={doctors}
+        patients={patients}
       />
     </div>
   );
