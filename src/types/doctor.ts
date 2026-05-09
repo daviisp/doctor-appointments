@@ -4,6 +4,7 @@ export type Doctor = {
   avatarUrl: string | null;
   appointmentPrice: number;
   specialty: {
+    id: string;
     name: string;
   };
   availabilities: {
