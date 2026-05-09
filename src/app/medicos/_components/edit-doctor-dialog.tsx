@@ -87,10 +87,6 @@ export const EditDoctorDialog = ({
     },
   });
 
-  console.log("specialtyId:", form.watch("specialtyId"));
-  console.log("doctor.specialty.id:", doctor.specialty.id);
-  console.log("specialties:", specialties);
-
   const availabilities = form.watch("availabilities");
 
   const toggleWeekDay = (day: number) => {
