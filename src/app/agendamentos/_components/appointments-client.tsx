@@ -46,11 +46,15 @@ export const AppointmentsClient = ({
             <AppointmentsSection
               title="Próximos agendamentos"
               appointments={upcoming}
+              doctors={doctors}
+              patients={patients}
             />
             <Separator />
             <AppointmentsSection
               title="Agendamentos anteriores"
               appointments={past}
+              doctors={doctors}
+              patients={patients}
             />
           </div>
         </div>
