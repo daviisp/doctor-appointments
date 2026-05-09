@@ -1,6 +1,8 @@
 export type AppointmentWithRelations = {
   id: string;
   date: Date;
+  patientId: string;
+  doctorId: string;
   patient: {
     name: string;
   };
