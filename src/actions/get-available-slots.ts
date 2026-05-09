@@ -26,7 +26,7 @@ export const getAvailableSlots = async (
 
   const bookedTimes = appointments.map(
     (a) =>
-      `${a.date.getUTCHours().toString().padStart(2, "0")}:${a.date.getUTCMinutes().toString().padStart(2, "0")}`,
+      `${a.date.getHours().toString().padStart(2, "0")}:${a.date.getMinutes().toString().padStart(2, "0")}`,
   );
 
   const slots: string[] = [];
