@@ -24,3 +24,20 @@ export const formatCpf = (cpf: string): string => {
 
   return `***.${cleaned.slice(3, 6)}.${cleaned.slice(6, 9)}-**`;
 };
+
+export const normalizeTime = (value: string): string => {
+  const cleaned = value.replace(/[^0-9:]/g, "");
+
+  if (!cleaned.includes(":")) {
+    const num = parseInt(cleaned);
+    if (isNaN(num)) return "";
+    const hours = Math.min(num, 23);
+    return `${hours.toString().padStart(2, "0")}:00`;
+  }
+
+  const [h, m] = cleaned.split(":");
+  const hours = Math.min(parseInt(h) || 0, 23);
+  const minutes = Math.min(parseInt(m) || 0, 59);
+
+  return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}`;
+};
