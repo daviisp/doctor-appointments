@@ -8,6 +8,7 @@ export const getDoctors = async (): Promise<Doctor[]> => {
     include: {
       specialty: {
         select: {
+          id: true,
           name: true,
         },
       },
