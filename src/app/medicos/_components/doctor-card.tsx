@@ -75,12 +75,6 @@ export const DoctorCard = ({ doctor, specialties }: DoctorCardProps) => {
               <span>{days}</span>
             </div>
             <div className="flex items-center gap-2">
-              <Clock className="size-4" />
-              <span>
-                Das {startTime} às {endTime}
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
               <DollarSign className="size-4" />
               <span>
                 {(doctor.appointmentPrice / 100).toLocaleString("pt-BR", {
