@@ -230,7 +230,7 @@ export const EditDoctorDialog = ({
                             <FieldLabel>Início</FieldLabel>
                             <InputGroup>
                               <InputGroupInput
-                                placeholder="08:00"
+                                placeholder="Exemplo: 08:00"
                                 value={availability.startTime}
                                 onChange={(e) =>
                                   updateAvailability(
@@ -253,7 +253,7 @@ export const EditDoctorDialog = ({
                             <FieldLabel>Fim</FieldLabel>
                             <InputGroup>
                               <InputGroupInput
-                                placeholder="17:00"
+                                placeholder="Exemplo: 17:00"
                                 value={availability.endTime}
                                 onChange={(e) =>
                                   updateAvailability(
