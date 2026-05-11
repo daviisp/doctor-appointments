@@ -24,7 +24,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { updateDoctor } from "@/actions/update-doctor";
 import { Doctor } from "@/types/doctor";
-import { normalizeTime } from "@/lib/utils";
+import { formatCurrency, normalizeTime } from "@/lib/utils";
 import { useEffect } from "react";
 import { ChevronDown } from "lucide-react";
 
@@ -194,6 +194,12 @@ export const EditDoctorDialog = ({
                 <InputGroupInput
                   placeholder="Ex: 250,00"
                   {...form.register("appointmentPrice")}
+                  onChange={(e) => {
+                    form.setValue(
+                      "appointmentPrice",
+                      formatCurrency(e.target.value),
+                    );
+                  }}
                 />
               </InputGroup>
               {form.formState.errors.appointmentPrice && (

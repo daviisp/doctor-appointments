@@ -84,3 +84,13 @@ export const validateCpf = (cpf: string): boolean => {
 
   return true;
 };
+
+export const formatCurrency = (value: string): string => {
+  const cleaned = value.replace(/\D/g, "");
+  if (!cleaned) return "";
+  const number = parseInt(cleaned) / 100;
+  return number.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+};

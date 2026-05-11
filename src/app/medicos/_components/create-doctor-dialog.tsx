@@ -23,7 +23,7 @@ import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { createDoctor } from "@/actions/create-doctor";
-import { normalizeTime } from "@/lib/utils";
+import { formatCurrency, normalizeTime } from "@/lib/utils";
 import { Stethoscope } from "lucide-react";
 
 const weekDays = [
@@ -112,7 +112,13 @@ export const CreateDoctorDialog = ({
 
   const onSubmit = async (data: FormData) => {
     const priceInCents = Math.round(
-      parseFloat(data.appointmentPrice.replace(",", ".")) * 100,
+      parseFloat(
+        data.appointmentPrice
+          .replace("R$", "")
+          .replace(/\./g, "")
+          .replace(",", ".")
+          .trim(),
+      ) * 100,
     );
 
     const result = await createDoctor({
@@ -191,6 +197,12 @@ export const CreateDoctorDialog = ({
                 <InputGroupInput
                   placeholder="Ex: 250,00"
                   {...form.register("appointmentPrice")}
+                  onChange={(e) => {
+                    form.setValue(
+                      "appointmentPrice",
+                      formatCurrency(e.target.value),
+                    );
+                  }}
                 />
               </InputGroup>
               {form.formState.errors.appointmentPrice && (
