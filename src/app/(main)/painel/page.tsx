@@ -22,7 +22,7 @@ const PanelPage = async () => {
           <div className="grid gap-6 lg:grid-cols-3">
             <div className="space-y-6 lg:col-span-2">
               <AppointmentsChartOnWeek data={chartData} />
-              <AppointmentsTable />
+              <AppointmentsTable status="Confirmado" />
             </div>
             <div className="space-y-6">
               <DoctorsList />
