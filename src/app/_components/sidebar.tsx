@@ -5,7 +5,6 @@ import {
   LayoutDashboard,
   Users,
   Stethoscope,
-  MoreVertical,
   Menu,
   X,
 } from "lucide-react";
@@ -13,6 +12,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { SidebarFooterMenu } from "./sidebar-footer-menu";
 
 const menuItems = [
   { icon: LayoutDashboard, label: "Painel", href: "/painel" },
@@ -82,14 +82,9 @@ export const Sidebar = () => {
               CC
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">Clinica Care</p>
-              <p className="text-xs text-muted-foreground truncate">
-                mail@example.com
-              </p>
+              <p className="text-sm font-medium truncate">Clinica Cemi</p>
             </div>
-            <button className="text-muted-foreground hover:text-foreground">
-              <MoreVertical className="h-4 w-4" />
-            </button>
+            <SidebarFooterMenu />
           </div>
         </div>
       </aside>
