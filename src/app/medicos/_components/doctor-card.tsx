@@ -10,6 +10,7 @@ import {
   Pencil,
   Stethoscope,
   Trash2,
+  UserIcon,
 } from "lucide-react";
 import { Doctor } from "@/types/doctor";
 import { useState } from "react";
@@ -55,9 +56,8 @@ export const DoctorCard = ({ doctor, specialties }: DoctorCardProps) => {
         <CardContent className="p-0 space-y-4">
           <div className="flex items-center gap-3">
             <Avatar className="size-16 bg-muted">
-              <AvatarImage src={doctor.avatarUrl ?? ""} alt={doctor.name} />
-              <AvatarFallback className="bg-slate-200 text-slate-600 text-lg font-medium">
-                {initials}
+              <AvatarFallback className="bg-slate-200 text-slate-600 flex items-center justify-center">
+                <UserIcon className="size-6" />
               </AvatarFallback>
             </Avatar>
             <div>
