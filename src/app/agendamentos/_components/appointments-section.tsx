@@ -1,6 +1,7 @@
 import { AppointmentWithRelations } from "@/types/appointment-with-relations";
 import { AppointmentsTable } from "./appointments-table";
 import { AppointmentsCards } from "./appointments-cards";
+import { Calendar } from "lucide-react";
 
 interface AppointmentsSectionProps {
   title: string;
@@ -21,9 +22,10 @@ export const AppointmentsSection = ({
 
   return (
     <div className="space-y-3">
-      <h2 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
-        {title}
-      </h2>
+      <div className="flex items-center gap-2">
+        <Calendar className="h-4 w-4 text-[#1a56db]" />
+        <h2 className="tracking-wide text-base font-semibold">{title}</h2>
+      </div>
       <AppointmentsTable
         appointments={appointments}
         status={isPast ? "Finalizado" : "Confirmado"}
