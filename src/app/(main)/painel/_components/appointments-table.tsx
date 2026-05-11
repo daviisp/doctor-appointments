@@ -52,7 +52,7 @@ export const AppointmentsTable = async ({ status }: AppointmentsTableProps) => {
               {appointments.map((appointment: AppointmentWithRelations) => (
                 <TableRow
                   key={appointment.id}
-                  className="text-foreground font-medium hover:bg-muted/50"
+                  className="font-medium hover:bg-muted/50"
                 >
                   <TableCell className="font-medium text-sm">
                     {appointment.patient.name}
@@ -73,7 +73,7 @@ export const AppointmentsTable = async ({ status }: AppointmentsTableProps) => {
             </TableBody>
           </Table>
         </div>
-        <div className="flex flex-col gap-3 md:hidden">
+        <div className="flex flex-col gap-3 md:hidden text-foreground">
           {appointments.map((appointment: AppointmentWithRelations) => (
             <div
               key={appointment.id}
