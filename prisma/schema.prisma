@@ -61,8 +61,8 @@ model DoctorAvailability {
 model Patient {
   id          String    @id @default(uuid())
   name        String
-  cpf         String    @unique
-  phone       String
+  cpf         String?    @unique
+  phone       String?
   sex         Sex
   dateOfBirth DateTime?
 
