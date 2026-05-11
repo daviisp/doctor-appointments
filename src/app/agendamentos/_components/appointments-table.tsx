@@ -62,24 +62,20 @@ export const AppointmentsTable = ({
               <TableHead className="w-20"></TableHead>
             </TableRow>
           </TableHeader>
-          <TableBody>
+          <TableBody className="text-foreground font-medium">
             {appointments.map((appointment) => (
               <TableRow key={appointment.id}>
-                <TableCell className="font-medium text-foreground">
+                <TableCell className="font-medium ">
                   {appointment.patient.name}
                 </TableCell>
-                <TableCell className="text-muted-foreground">
+                <TableCell>
                   {format(new Date(appointment.date), "dd/MM/yy, HH:mm", {
                     locale: ptBR,
                   })}
                 </TableCell>
-                <TableCell className="text-muted-foreground">
-                  {appointment.doctor.name}
-                </TableCell>
-                <TableCell className="text-muted-foreground">
-                  {appointment.doctor.specialty.name}
-                </TableCell>
-                <TableCell className="text-muted-foreground">
+                <TableCell>{appointment.doctor.name}</TableCell>
+                <TableCell>{appointment.doctor.specialty.name}</TableCell>
+                <TableCell>
                   {(appointment.doctor.appointmentPrice / 100).toLocaleString(
                     "pt-BR",
                     {
@@ -99,7 +95,7 @@ export const AppointmentsTable = ({
                       className="h-8 w-8 cursor-pointer"
                       onClick={() => setEditAppointment(appointment)}
                     >
-                      <Pencil className="h-4 w-4 text-muted-foreground" />
+                      <Pencil className="h-4 w-4" />
                     </Button>
                     <Button
                       variant="ghost"
