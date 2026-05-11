@@ -1,5 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
 import { getSpecialtiesWithUpcomingAppointments } from "@/actions/get-specialties-with-upcoming-appointments";
 import { SpecialtyWithUpcomingAppointments } from "@/types/specialties-with-upcoming-appointments";
 import { HospitalIcon } from "lucide-react";
@@ -15,12 +14,6 @@ export const SpecialtiesList = async () => {
             <HospitalIcon className="h-4 w-4 text-[#1a56db]" />
             Especialidades
           </CardTitle>
-          <Link
-            href="/especialidades"
-            className="text-xs text-[#1a56db] hover:underline"
-          >
-            Ver todos
-          </Link>
         </div>
       </CardHeader>
       <CardContent className="pt-0">
