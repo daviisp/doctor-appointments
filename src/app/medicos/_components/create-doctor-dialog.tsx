@@ -24,6 +24,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { createDoctor } from "@/actions/create-doctor";
 import { normalizeTime } from "@/lib/utils";
+import { Stethoscope } from "lucide-react";
 
 const weekDays = [
   { label: "Segunda", value: 1 },
@@ -135,7 +136,10 @@ export const CreateDoctorDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Adicionar médico</DialogTitle>
+          <div className="flex items-center gap-2">
+            <Stethoscope className="h-4 w-4 text-[#1a56db]" />
+            <DialogTitle className="text-base">Adicionar médico</DialogTitle>
+          </div>
         </DialogHeader>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
