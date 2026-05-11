@@ -15,7 +15,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "/painel" },
+  { icon: LayoutDashboard, label: "Painel", href: "/painel" },
   { icon: Calendar, label: "Agendamentos", href: "/agendamentos" },
   { icon: Stethoscope, label: "Médicos", href: "/medicos" },
   { icon: Users, label: "Pacientes", href: "/pacientes" },
@@ -50,9 +50,7 @@ export const Sidebar = () => {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#1a56db]">
             <Calendar className="h-4 w-4 text-white" />
           </div>
-          <span className="text-lg font-semibold text-[#1a56db]">
-            dr.agenda
-          </span>
+          <span className="text-lg font-semibold text-[#1a56db]">Cemi</span>
         </div>
         <nav className="flex-1 px-3">
           <p className="mb-2 px-3 text-xs font-medium text-muted-foreground">
