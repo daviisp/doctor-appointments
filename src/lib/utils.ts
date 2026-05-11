@@ -5,7 +5,9 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatPhone(phone: string): string {
+export function formatPhone(phone?: string): string {
+  if (!phone) return "Não informado";
+
   const cleaned = phone.replace(/\D/g, "");
 
   if (cleaned.length === 11) {
@@ -19,10 +21,12 @@ export function formatPhone(phone: string): string {
   return phone;
 }
 
-export const formatCpf = (cpf: string): string => {
-  const cleaned = cpf.replace(/\D/g, "");
+export const formatCpf = (cpf?: string): string => {
+  if (!cpf) return "Não informado";
 
-  return `***.${cleaned.slice(3, 6)}.${cleaned.slice(6, 9)}-**`;
+  const cleaned = cpf?.replace(/\D/g, "");
+
+  return `***.${cleaned?.slice(3, 6)}.${cleaned?.slice(6, 9)}-**`;
 };
 
 export const normalizeTime = (value: string): string => {
