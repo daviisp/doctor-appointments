@@ -34,11 +34,17 @@ import { Spinner } from "@/components/ui/spinner";
 import { createPatient } from "@/actions/create-patient";
 import { useState } from "react";
 import { Users } from "lucide-react";
+import { formatCpfInput, formatPhoneInput, validateCpf } from "@/lib/utils";
 
 const schema = z.object({
   name: z.string().min(1, "Nome é obrigatório"),
   phone: z.string().optional(),
-  cpf: z.string().optional(),
+  cpf: z
+    .string()
+    .optional()
+    .refine((val) => !val || validateCpf(val), {
+      message: "CPF inválido",
+    }),
   sex: z.enum(["MALE", "FEMALE"], { message: "Sexo é obrigatório" }),
   dateOfBirth: z.string().optional(),
 });
@@ -90,8 +96,8 @@ export const CreatePatientDialog = ({
   const savePatient = async (data: FormData) => {
     const result = await createPatient({
       name: data.name,
-      phone: data.phone || null,
-      cpf: data.cpf || null,
+      phone: data.phone ? data.phone.replace(/\D/g, "") : null,
+      cpf: data.cpf ? data.cpf.replace(/\D/g, "") : null,
       sex: data.sex,
       dateOfBirth: data.dateOfBirth ? new Date(data.dateOfBirth) : null,
     });
@@ -153,19 +159,29 @@ export const CreatePatientDialog = ({
                   <InputGroupInput
                     placeholder="(00) 00000-0000"
                     {...form.register("phone")}
+                    onChange={(e) => {
+                      form.setValue("phone", formatPhoneInput(e.target.value));
+                    }}
                   />
                 </InputGroup>
               </Field>
 
-              {/* CPF */}
               <Field>
                 <FieldLabel>CPF</FieldLabel>
                 <InputGroup>
                   <InputGroupInput
                     placeholder="000.000.000-00"
                     {...form.register("cpf")}
+                    onChange={(e) => {
+                      form.setValue("cpf", formatCpfInput(e.target.value));
+                    }}
                   />
                 </InputGroup>
+                {form.formState.errors.cpf && (
+                  <p className="text-sm text-red-500 mt-1">
+                    {form.formState.errors.cpf.message}
+                  </p>
+                )}
               </Field>
 
               {/* Sexo */}
