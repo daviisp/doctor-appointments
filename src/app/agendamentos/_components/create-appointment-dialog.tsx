@@ -39,6 +39,7 @@ import { Spinner } from "@/components/ui/spinner";
 import { cn } from "@/lib/utils";
 import { getAvailableSlots } from "@/actions/get-available-slots";
 import { createAppointment } from "@/actions/create-appointment";
+import { Calendar as CalendarIcon } from "lucide-react";
 
 const schema = z.object({
   patientId: z.string().min(1, "Selecione um paciente"),
@@ -128,7 +129,10 @@ export const CreateAppointmentDialog = ({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Novo agendamento</DialogTitle>
+          <div className="flex items-center gap-2">
+            <CalendarIcon className="h-4 w-4 text-[#1a56db]" />
+            <DialogTitle className="text-base">Novo agendamento</DialogTitle>
+          </div>
         </DialogHeader>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
