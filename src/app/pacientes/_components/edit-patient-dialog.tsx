@@ -250,8 +250,9 @@ export const EditPatientDialog = ({
           <AlertDialogHeader>
             <AlertDialogTitle>Informações incompletas</AlertDialogTitle>
             <AlertDialogDescription>
-              Você está prestes a salvar o paciente sem{" "}
-              {missingFields.join(" e ")}. Deseja continuar mesmo assim?
+              Você está prestes a editar o paciente sem{" "}
+              <span className="font-bold">{missingFields.join(" e ")}</span>.
+              Deseja continuar mesmo assim?
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
