@@ -3,6 +3,11 @@ import { getPastAppointments } from "@/actions/get-past-appointments";
 import { getDoctorsForSelect } from "@/actions/get-doctors-for-select";
 import { getPatientsForSelect } from "@/actions/get-patients-for-select";
 import { AppointmentsClient } from "./_components/appointments-client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Clínica Cemi - Agendamentos",
+};
 
 const AppointmentsPage = async () => {
   const [upcoming, past, doctors, patients] = await Promise.all([

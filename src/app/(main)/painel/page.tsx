@@ -5,6 +5,11 @@ import { SpecialtiesList } from "./_components/specialties-list";
 import { StatsCards } from "./_components/stats-card";
 import { AppointmentsChartOnWeek } from "./_components/appointments-chart-on-week";
 import { getAppointmentsChartOnWeek } from "@/actions/get-appointments-chart-on-week";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Clínica Cemi - Painel",
+};
 
 const PanelPage = async () => {
   const chartData = await getAppointmentsChartOnWeek();
