@@ -114,7 +114,7 @@ export const CreateDoctorDialog = ({
     const priceInCents = Math.round(
       parseFloat(
         data.appointmentPrice
-          .replace("R$", "")
+          .replace(/R\$\s*/g, "")
           .replace(/\./g, "")
           .replace(",", ".")
           .trim(),

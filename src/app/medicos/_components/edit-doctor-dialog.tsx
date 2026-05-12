@@ -122,7 +122,13 @@ export const EditDoctorDialog = ({
 
   const onSubmit = async (data: FormData) => {
     const priceInCents = Math.round(
-      parseFloat(data.appointmentPrice.replace(",", ".")) * 100,
+      parseFloat(
+        data.appointmentPrice
+          .replace(/R\$\s*/g, "")
+          .replace(/\./g, "")
+          .replace(",", ".")
+          .trim(),
+      ) * 100,
     );
 
     const result = await updateDoctor({

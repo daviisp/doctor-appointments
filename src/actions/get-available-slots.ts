@@ -24,10 +24,11 @@ export const getAvailableSlots = async (
     },
   });
 
-  const bookedTimes = appointments.map(
-    (a) =>
-      `${a.date.getHours().toString().padStart(2, "0")}:${a.date.getMinutes().toString().padStart(2, "0")}`,
-  );
+  const bookedTimes = appointments.map((a) => {
+    const date = new Date(a.date);
+    const brasiliaDate = new Date(date.getTime() - 3 * 60 * 60 * 1000);
+    return `${brasiliaDate.getUTCHours().toString().padStart(2, "0")}:${brasiliaDate.getUTCMinutes().toString().padStart(2, "0")}`;
+  });
 
   const slots: string[] = [];
   const [startHour, startMinute] = availability.startTime
